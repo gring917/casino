@@ -1,0 +1,369 @@
+body{
+  background-image: url("./casino_back.jpg");
+  background-color:rgba(255,255,255,0.2);
+  background-blend-mode:lighten;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2 {
+  font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', 'Hiragino Mincho ProN', 'HGS明朝E', 'ＭＳ Ｐ明朝', serif;
+  padding: 1rem 2rem;
+  color: #fff;
+  background:  rgba(0,0,0,0.8);
+  text-align: center;
+  border-radius: 25%;
+}
+
+h2 span {
+  background-image: -webkit-linear-gradient(315deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
+  background-image: linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #fefeb2 47%, #fafad6 50%, #fefeb2 53%, #e1ce08 63%, #b8751e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-rot{
+  width: 30vw;
+  text-align: center;
+  font-size: 1.8vw;
+  float: left;
+  margin: 2rem;
+  margin-top: 30vw;
+  margin-left: 12vw;
+  overflow: hidden; /*必須*/
+}
+
+/* ボタン（リンク）部分 */
+.btn-rot a{
+  border-radius: 25%;
+  text-decoration: none; /*下線削除*/
+  display: inline-block;
+  position: relative; /*疑似要素作成用*/
+  padding: 0.75em 4em;
+  margin: 1rem;
+  background: linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%); /*ボタン色*/
+  color: black; /*文字色*/
+  font-size: bold;
+  box-sizing: border-box;
+}
+
+/*ボタンの枠線*/
+.btn-rot a:before{
+  border-radius: 25%;
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid black; /*枠線*/
+  z-index: -2;
+}
+
+/*** ボタン線上の光沢 ***/
+.btn-rot a:after{
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -100px;
+  width: 100px;
+  height: 30px;
+  background: white; /*光沢の色はページの背景色*/
+  filter: blur(10px); /*ぼかし*/
+  animation: 3s arround-circle linear infinite; /*枠線場を周るアニメーション*/
+  z-index: -1;
+}
+
+.btn-rot a:hover{
+  opacity: 0.5;
+}
+
+/*** 線上を回るアニメーション ***/
+@keyframes arround-circle{
+  /**************
+  0%~40%：左上から右上
+  40%~50%：右上から右下
+  50%~90%：右下から左下
+  90%~100%：左下から左上
+  **************/
+  0%{
+    top: -30px;
+    left: -100px;
+  }
+  40%{
+    top: -30px;
+    left: 100%;/*右まで移動*/
+  }
+  50%{
+    top: 100%; /*下まで移動*/
+    left: 100%;
+  }
+  90%{
+    top: 100%;
+    left: -100px; /*左まで移動*/
+  }
+  100%{
+    top: -30px; /*元の位置*/
+    left: -100px;
+  }
+}
+
+:root{
+  --red:red;
+  --black:black;
+  --orange:#F8A055;
+
+  --ban-size:400px;
+  --ban-teihen-width:108px;
+}
+body{
+  overflow:hidden;
+}
+div{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+h1{
+  font-size:100%;
+  margin-top:0;
+}
+
+@keyframes roulette{
+  0%{
+    transform:rotate(0deg);
+  }
+  50%{
+    transform:rotate(180deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes roulettehari{
+  0%{
+    border-top-color: rgba(248,160,85,1);
+  }
+  50%{
+    border-top-color: rgba(248,201,85,1);
+  }
+  100%{
+    border-top-color: rgba(248,160,85,1);
+  }
+}
+@keyframes roulettebtn{
+  0%{
+    background: rgba(248,160,85,1);
+  }
+  50%{
+    background: rgba(248,201,85,1);
+  }
+  100%{
+    background: rgba(248,160,85,1);
+  }
+}
+h1{ text-align:center; }
+#roulette{
+  width:var(--ban-size);
+  margin:0 auto;
+}
+
+.act-start:hover{
+  cursor: pointer;
+}
+/* ルーレットのボタン */
+.act-start{
+  display:block;
+  margin-bottom:40px;
+  margin-right:auto;
+  margin-left:auto;
+  width:calc(var(--ban-size) * 0.7);
+  height:1.8em;
+  border-radius:0.25em;
+  padding:20px;
+  background:var(--orange);
+  animation:roulettebtn 0.5s ease-in infinite ;
+  animation-play-state:paused;
+}
+.start_btn:checked + .act-start{
+  animation-play-state:running;
+}
+.act-start span,
+.start_btn + .act-start span:before{
+  display:block;
+  width:100%; height:100%;
+
+}
+.start_btn{
+  display:none;
+}
+.start_btn + .act-start span:before{
+  content:"スタート！";
+  line-height:1.8em;
+  vertical-align:middle;
+  text-align:center;
+}
+
+.start_btn:checked + .act-start span:before{
+  content:"ストップ！";
+}
+
+
+#roulette .rltt-body{
+  position:relative;
+  width:var(--ban-size);
+}
+/* ルーレットの針 */
+#roulette .hari{
+  position:absolute;
+  margin-right:auto;
+  margin-left:auto;
+  right:0; left:0;
+  top:-20px; bottom:0;
+  z-index:10;
+  width:0; height:0;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-top:80px solid var(--orange);
+  animation:roulettehari 0.5s ease-in infinite;
+  animation-play-state:paused;
+}
+
+#roulette .start_btn:checked + .act-start + .rltt-body .hari{
+  animation-play-state:running;
+}
+
+#roulette .rltt{
+  position:relative;
+  width:var(--ban-size);
+  height:var(--ban-size);
+  overflow:hidden;
+  background:#fff;
+  border-radius:var(--ban-size);
+  animation:
+    roulette 1s linear forwards infinite,
+    neonshadow 1s linear infinite;
+  animation-play-state:paused;
+}
+
+#roulette .start_btn:checked + .act-start + .rltt-body .rltt{
+  animation-play-state:running;
+}
+
+#roulette .rltt .ban,
+#roulette .rltt .labelgroup{
+  position:absolute;
+  top:0; bottom:0;
+  left:0; right:0;
+  margin:auto;
+  height:var(--ban-size);
+  width:var(--ban-teihen-width);
+}
+
+/* ★のラベルを配置したい */
+#roulette .rltt .labelgroup div{
+  margin:0;
+  height:calc(var(--ban-size) / 2);
+  text-align:center;
+  padding-top:0.5em;
+  opacity:0.5;
+  font-size:120%;
+  color:#fff;
+}
+#roulette .rltt .labelgroup div:nth-child(2){
+  transform:rotate(180deg);
+}
+
+#roulette .rltt .labelgroup:nth-child(1){ transform:rotate(0deg); }
+#roulette .rltt .labelgroup:nth-child(2){ transform:rotate(60deg); }
+#roulette .rltt .labelgroup:nth-child(3){ transform:rotate(120deg); }
+
+
+#roulette .rltt .ban:before{
+  content:"";
+  display:block;
+  width:0;
+  height:0;
+  border-left:calc(var(--ban-teihen-width) / 2) solid transparent;
+  border-right:calc(var(--ban-teihen-width) / 2) solid transparent;
+  border-top:calc(var(--ban-size) / 2) solid var(--black);
+
+}
+#roulette .rltt .ban:after{
+  content:"";
+  display:block;
+  width:0;
+  height:0;
+  border-left:calc(var(--ban-teihen-width) / 2) solid transparent;
+  border-right:calc(var(--ban-teihen-width) / 2) solid transparent;
+  border-bottom:calc(var(--ban-size) / 2) solid var(--black);
+
+}
+
+/* 青の盤の場合は色を変更する */
+#roulette .rltt .ban.red:before{ border-top-color:var(--red); }
+#roulette .rltt .ban.red:after{ border-bottom-color:var(--red); }
+
+
+/* 回転させる */
+#roulette .rltt .ban:nth-child(2){transform:rotate(30deg);}
+#roulette .rltt .ban:nth-child(3){transform:rotate(60deg);}
+#roulette .rltt .ban:nth-child(4){transform:rotate(90deg);}
+#roulette .rltt .ban:nth-child(5){transform:rotate(120deg);}
+#roulette .rltt .ban:nth-child(6){transform:rotate(150deg);}
+
+.Diceroll{
+  float: left;
+  margin-right: 13vw;
+}
+
+button{
+  cursor: pointer;
+  color: red;
+}
+
+h4:hover{
+  cursor: pointer;
+}
+
+.Diceroll{
+  width: 20vw;
+  margin-bottom: 20vw;
+  border-radius: 25%;
+  text-decoration: none; /*下線削除*/
+  display: inline-block;
+  position: relative; /*疑似要素作成用*/
+  padding: 0.75em 4em;
+  margin: 1rem;
+  background: white; /*ボタン色*/
+  color: black; /*文字色*/
+  font-size: bold;
+}
+
+.Sum{
+  width: 15vw;
+  border-radius: 25%;
+  text-decoration: none; /*下線削除*/
+  display: inline-block;
+  position: relative; /*疑似要素作成用*/
+  padding: 0.75em 4em;
+  margin: 1rem;
+  background: white; /*ボタン色*/
+  color: black; /*文字色*/
+  font-size: bold;
+}
+
+.coin{
+  border-radius: 25%;
+  text-decoration: none; /*下線削除*/
+  display: inline-block;
+  position: relative; /*疑似要素作成用*/
+  padding: 0.75em 4em;
+  margin: 1rem;
+  background: linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%); /*ボタン色*/
+  color: black; /*文字色*/
+  font-size: bold;
+  box-sizing: border-box;
+}
