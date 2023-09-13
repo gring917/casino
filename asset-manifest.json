@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/https://github.com/gring917/casino.git/static/css/main.31d6cfe0.css",
-    "main.js": "/https://github.com/gring917/casino.git/static/js/main.14a636bf.js",
-    "index.html": "/https://github.com/gring917/casino.git/index.html",
-    "main.14a636bf.js.map": "/https://github.com/gring917/casino.git/static/js/main.14a636bf.js.map"
+    "main.css": "/casino/static/css/main.31d6cfe0.css",
+    "main.js": "/casino/static/js/main.14a636bf.js",
+    "index.html": "/casino/index.html",
+    "main.14a636bf.js.map": "/casino/static/js/main.14a636bf.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
